@@ -6,8 +6,9 @@ import { MessagePattern, Payload } from '@nestjs/microservices';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @MessagePattern({ cmd: 'send_email' })
-  handleSendEmail(@Payload() data: any) {
+  @MessagePattern('send_email')
+  handleSendEmail(@Payload() data: { to: string; subject: string }) {
     console.log('Received email data:', data);
+    return { status: 'Email sent successfully', data };
   }
 }
