@@ -17,5 +17,7 @@ async function bootstrap() {
     },
   );
   await app.listen();
+  console.log('Email microservice is listening...');
 }
-bootstrap();
+
+void bootstrap();
